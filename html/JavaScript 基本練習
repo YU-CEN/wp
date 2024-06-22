@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Functions</title>
+    <script>
+        // 打印 Hello 你好！
+        document.addEventListener('DOMContentLoaded', (event) => {
+            console.log('Hello 你好！');
+        });
+
+        // 打印小於 n 的所有奇數
+        function printOdd(n) {
+            let result = [];
+            for (let i = 1; i < n; i += 2) {
+                result.push(i);
+            }
+            console.log('小於 ' + n + ' 的所有奇數: ' + result.join(', '));
+            return result;
+        }
+
+        // 判斷 n 是否為質數
+        function isPrime(n) {
+            if (n <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        // 印出所有小於 n 的質數總和
+        function sumPrime(n) {
+            let sum = 0;
+            for (let i = 2; i < n; i++) {
+                if (isPrime(i)) sum += i;
+            }
+            console.log('所有小於 ' + n + ' 的質數總和: ' + sum);
+            return sum;
+        }
+
+        // 向量相加
+        function vectorAdd(a, b) {
+            if (a.length !== b.length) throw 'Vectors must be of the same length';
+            let result = [];
+            for (let i = 0; i < a.length; i++) {
+                result.push(a[i] + b[i]);
+            }
+            console.log('向量相加結果: ' + result.join(', '));
+            return result;
+        }
+
+        // 矩陣相加
+        function matrixAdd(a, b) {
+            if (a.length !== b.length || a[0].length !== b[0].length) throw 'Matrices must be of the same dimensions';
+            let result = [];
+            for (let i = 0; i < a.length; i++) {
+                let row = [];
+                for (let j = 0; j < a[0].length; j++) {
+                    row.push(a[i][j] + b[i][j]);
+                }
+                result.push(row);
+            }
+            console.log('矩陣相加結果: ', result);
+            return result;
+        }
+
+        // 矩陣相乘
+        function matrixMul(a, b) {
+            if (a[0].length !== b.length) throw 'Number of columns in the first matrix must be equal to the number of rows in the second matrix';
+            let result = [];
+            for (let i = 0; i < a.length; i++) {
+                let row = [];
+                for (let j = 0; j < b[0].length; j++) {
+                    let sum = 0;
+                    for (let k = 0; k < a[0].length; k++) {
+                        sum += a[i][k] * b[k][j];
+                    }
+                    row.push(sum);
+                }
+                result.push(row);
+            }
+            console.log('矩陣相乘結果: ', result);
+            return result;
+        }
+
+        // 傳回西元 n 年應該有幾天
+        function daysInYear(n) {
+            if ((n % 4 === 0 && n % 100 !== 0) || n % 400 === 0) {
+                return 366;
+            } else {
+                return 365;
+            }
+        }
+
+        // 測試函數
+        document.addEventListener('DOMContentLoaded', (event) => {
+            printOdd(10);
+            console.log('7 是質數嗎？' + isPrime(7));
+            sumPrime(10);
+            console.log('向量 [1, 2, 3] 和 [4, 5, 6] 相加結果: ', vectorAdd([1, 2, 3], [4, 5, 6]));
+            console.log('矩陣 [[1, 2], [3, 4]] 和 [[5, 6], [7, 8]] 相加結果: ', matrixAdd([[1, 2], [3, 4]], [[5, 6], [7, 8]]));
+            console.log('矩陣 [[1, 2], [3, 4]] 和 [[5, 6], [7, 8]] 相乘結果: ', matrixMul([[1, 2], [3, 4]], [[5, 6], [7, 8]]));
+            console.log('1991 年有多少天？' + daysInYear(1991));
+            console.log('2004 年有多少天？' + daysInYear(2004));
+            console.log('1900 年有多少天？' + daysInYear(1900));
+            console.log('2000 年有多少天？' + daysInYear(2000));
+        });
+    </script>
+</head>
+<body>
+    <h1>請打開瀏覽器的控制台查看輸出</h1>
+</body>
+</html>
