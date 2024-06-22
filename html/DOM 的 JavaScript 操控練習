@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>移動按鈕</title>
+    <style>
+        body {
+            position: relative;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        button {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="job1()">點我</button>
+    <script>
+        function job1() {
+            width += 10;
+            height += 10;
+            left += 10;
+            b.style = `position:${position};left:${left}px;top:${top1}px;height:${height}px;width:${width}px`;
+        }
+
+        function moveButton() {
+            left = Math.random() * (window.innerWidth - width);
+            top1 = Math.random() * (window.innerHeight - height);
+            b.style = `position:${position};left:${left}px;top:${top1}px;height:${height}px;width:${width}px`;
+        }
+
+        let left = 100;
+        let top1 = 100;
+        let height = 50;
+        let width = 100;
+        let position = 'absolute';
+        let b = document.querySelector('button');
+        b.style = `position:${position};left:${left}px;top:${top1}px;height:${height}px;width:${width}px`;
+
+        setInterval(moveButton, 1000); // 每秒移動一次按鈕到隨機位置
+    </script>
+</body>
+</html>
